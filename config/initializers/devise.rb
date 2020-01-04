@@ -296,4 +296,10 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+  require File.expand_path('../../../lib/omniauth/strategies/mock', __FILE__)
+  Devise.setup do |config|
+    # APP_IDとAPP_SECRETはoauth_test_providerリポジトリでローカルで発行したキー
+    # ローカルで発行したものなので、このままコミットしちゃう
+    config.omniauth :mock, 'sfxBjoZ9O_NhFXz291f_9HWwy3fjo1h3703DKODnkAQ', 'LlXPdDlpKAdAeKABaM92CV5oqPXSdkXkF8aYl1Uk5So', client_options: { site: 'http://localhost:3000' }
+  end
 end
