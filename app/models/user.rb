@@ -12,8 +12,7 @@ class User < ApplicationRecord
       uid: auth.uid,
       token: auth.credentials.token,
       password: Devise.friendly_token[0, 20],
-      raw: auth.extra.to_json,
-      scope: 'public'
+      raw: auth.extra.to_json
     }
     user = User.find_by(uid: auth.uid)
     return update_mock!(user, parameters) if user
